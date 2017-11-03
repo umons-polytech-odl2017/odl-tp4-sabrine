@@ -13,7 +13,9 @@ public class ExceptionCatcher {
 
 		try {
 			exceptionThrower.throwACustomExceptionWhenValueIs42(value);
-		} catch (NotreException e) {
+		}
+
+		catch (NotreException e) {
 		}
 	}
 }

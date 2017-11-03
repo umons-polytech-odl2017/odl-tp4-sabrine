@@ -1,17 +1,26 @@
 package exercise2;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 
 public class Exercise2 {
+
 	public static void save(Classroom classroom, Path filePath) {
 
 	}
 
-	public static Classroom load(Path filePath) {
+	public static Classroom load(Path filePath) { ;
+		InputStream reader =new InputStream(new FileInputStream(filePath));
+
+		try (BufferedReader reader = Files.newBufferedReader(filePath, utf8Charset)) {
+			reader.lines().forEach(line -> ...);
+		}
 		return null;
 	}
 
