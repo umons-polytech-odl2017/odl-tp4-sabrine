@@ -3,6 +3,7 @@ package exercise2;
 import java.io.Serializable;
 
 public class PhoneNumber implements Serializable{
+
 	private final String number;
 
 	public PhoneNumber(String number) {

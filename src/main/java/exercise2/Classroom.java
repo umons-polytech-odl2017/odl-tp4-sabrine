@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class Classroom implements Serializable {
+
 	private final Teacher teacher;
 	private final Student[] students;
 

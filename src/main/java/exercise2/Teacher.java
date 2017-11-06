@@ -3,10 +3,12 @@ package exercise2;
 import java.time.LocalDate;
 
 public class Teacher extends Person {
+
 	private final PhoneNumber officePhone;
 	private final Location officeLocation;
 
 	public Teacher(String firstName, String lastName, LocalDate birthDate, PhoneNumber officePhone, Location officeLocation) {
+
 		super(firstName, lastName, birthDate);
 		this.officePhone = officePhone;
 		this.officeLocation = officeLocation;

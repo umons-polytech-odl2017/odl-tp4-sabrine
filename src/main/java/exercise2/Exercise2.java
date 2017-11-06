@@ -9,21 +9,28 @@ import java.time.LocalDate;
 
 public class Exercise2 {
 	public static void save(Classroom classroom, Path filePath) throws IOException {
+
 		try(OutputStream output = Files.newOutputStream(filePath)) {
 			ObjectOutput objectOutput = new ObjectOutputStream(output);
 			objectOutput.writeObject(classroom);
 		}
 	}
 
-	public static Classroom load(Path filePath) throws IOException {
-		filePath = Paths.get("classroom.ser");
+	public static Classroom load(Path filePath) throws IOException, ClassNotFoundException {
+
+		/*filePath = Paths.get("classroom.ser");
 		Charset utf8Charset = Charset.forName("UTF-8");
 		try(BufferedReader reader = Files.newBufferedReader(filePath, utf8Charset)){
 			reader.lines().forEach(line ->...);
+		}*/
+
+		try(InputStream input = Files.newInputStream(filePath)) {
+			ObjectInput objectinput = new ObjectInputStream(input);
+			return (Classroom) objectinput.readObject();
 		}
 	}
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		Teacher teacher = new Teacher("Claire", "Barnett",
 			LocalDate.of(1975, 3, 7), new PhoneNumber("+32 65 123 456"),
 			new Location("Ho.23", "Houdain"));
@@ -40,7 +47,7 @@ public class Exercise2 {
 
 		System.out.printf("Classroom saved to %s, size=%d bytes\n", filePath.toString(), Files.size(filePath));
 
-		Classroom loadedClassroom = load(filePath);
+		Classroom loadedClassroom = load (filePath);
 
 		System.out.printf("Classroom loaded from %s: %s\n", filePath.toString(), loadedClassroom.toString());
 	}
