@@ -1,27 +1,26 @@
 package exercise2;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 
 public class Exercise2 {
-
-	public static void save(Classroom classroom, Path filePath) {
-
+	public static void save(Classroom classroom, Path filePath) throws IOException {
+		try(OutputStream output = Files.newOutputStream(filePath)) {
+			ObjectOutput objectOutput = new ObjectOutputStream(output);
+			objectOutput.writeObject(classroom);
+		}
 	}
 
-	public static Classroom load(Path filePath) { ;
-		InputStream reader =new InputStream(new FileInputStream(filePath));
-
-		try (BufferedReader reader = Files.newBufferedReader(filePath, utf8Charset)) {
-			reader.lines().forEach(line -> ...);
+	public static Classroom load(Path filePath) throws IOException {
+		filePath = Paths.get("classroom.ser");
+		Charset utf8Charset = Charset.forName("UTF-8");
+		try(BufferedReader reader = Files.newBufferedReader(filePath, utf8Charset)){
+			reader.lines().forEach(line ->...);
 		}
-		return null;
 	}
 
 	public static void main(String[] args) throws IOException {

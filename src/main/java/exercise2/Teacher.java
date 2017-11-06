@@ -13,10 +13,12 @@ public class Teacher extends Person {
 	}
 
 	public PhoneNumber getOfficePhone() {
+
 		return officePhone;
 	}
 
 	public Location getOfficeLocation() {
+
 		return officeLocation;
 	}
 
