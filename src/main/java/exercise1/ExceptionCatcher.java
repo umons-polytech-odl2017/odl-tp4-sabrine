@@ -15,7 +15,7 @@ public class ExceptionCatcher {
 			exceptionThrower.throwACustomExceptionWhenValueIs42(value);
 		}
 
-		catch (NotreException e) {
+		catch (RuntimeException e) {
 		}
 	}
 }
